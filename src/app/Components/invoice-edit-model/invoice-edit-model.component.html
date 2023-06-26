@@ -1,0 +1,51 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Edit Invoice</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+    <form [formGroup]="invoiceForm">
+      <div class="form-group">
+        <label for="date">Date</label>
+        <div class="input-group">
+          <input
+            id="date"
+            class="form-control"
+            placeholder="yyyy-mm-dd hh:mm"
+            name="date"
+            ngbDatepicker
+            #dp="ngbDatepicker"
+            formControlName="date"
+          />
+          <button
+            class="btn btn-outline-secondary bi bi-calendar3"
+            (click)="dp.toggle()"
+            type="button"
+          >
+            D
+          </button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="customerID">Customer ID</label>
+        <input type="text" class="form-control" id="customerID" formControlName="customerID">
+      </div>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <input type="text" class="form-control" id="status" formControlName="status">
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="text" class="form-control" id="amount" formControlName="amount">
+      </div>
+    </form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="saveInvoice()">Save</button>
+
+	</div>
+</ng-template>
+
+
+<button class="btn btn-primary" (click)="open(content)">Edit</button>
+
